@@ -22,17 +22,9 @@
         }
 
         @keyframes gradientBG {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .container {
@@ -75,17 +67,8 @@
         }
 
         @keyframes floatSoft {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-5px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
         }
 
         .btn,
@@ -120,21 +103,11 @@
         }
 
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.05);
-            }
-
-            100% {
-                transform: scale(1);
-            }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        .hearts,
-        .balloons {
+        .hearts, .balloons {
             position: fixed;
             pointer-events: none;
             z-index: 1;
@@ -144,54 +117,35 @@
             height: 100%;
         }
 
+        .heart, .balloon {
+            position: absolute;
+            background-size: contain;
+        }
+
         .heart {
             width: 30px;
             height: 30px;
-            background-size: contain;
-            position: absolute;
             animation: float 6s linear infinite;
         }
 
         .balloon {
             width: 40px;
             height: 60px;
-            background-size: contain;
-            position: absolute;
             bottom: -100px;
             animation: rise 6s ease-in-out forwards;
             z-index: 10;
         }
 
         @keyframes float {
-            0% {
-                transform: translateY(100vh) scale(1);
-                opacity: 0;
-            }
-
-            50% {
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(-100vh) scale(1.5);
-                opacity: 0;
-            }
+            0% { transform: translateY(100vh); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(-100vh); opacity: 0; }
         }
 
         @keyframes rise {
-            0% {
-                bottom: -100px;
-                opacity: 0;
-            }
-
-            30% {
-                opacity: 1;
-            }
-
-            100% {
-                bottom: 120%;
-                opacity: 0;
-            }
+            0% { bottom: -100px; opacity: 0; }
+            30% { opacity: 1; }
+            100% { bottom: 120%; opacity: 0; }
         }
 
         #thankyou-popup {
@@ -209,70 +163,51 @@
             color: #444;
         }
 
-        audio {
+        #surprise-popup {
             display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Responsive Design */
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.8em;
-            }
-
-            .message {
-                font-size: 1em;
-                padding: 15px;
-            }
-
-            .btn,
-            .surprise-btn {
-                font-size: 1em;
-                padding: 12px 20px;
-            }
-
-            .cute-sticker {
-                width: 80px;
-                margin: 5px;
-            }
+        .popup-inner {
+            animation: popupFade 0.5s ease;
         }
 
-#surprise-popup {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6); /* dark overlay */
-    z-index: 999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.popup-inner {
-    animation: popupFade 0.5s ease;
-}
-
-.popup-inner img {
-    width: 250px;
-    max-width: 90vw;
-    height: auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
+        .popup-inner img {
+            width: 250px;
+            max-width: 90vw;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
 
         @keyframes popupFade {
             from {
                 opacity: 0;
-                transform: translate(-50%, -60%);
+                transform: translateY(-20px);
             }
-
             to {
                 opacity: 1;
-                transform: translate(-50%, -50%);
+                transform: translateY(0);
             }
+        }
+
+        audio {
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8em; }
+            .message { font-size: 1em; padding: 15px; }
+            .btn, .surprise-btn { font-size: 1em; padding: 12px 20px; }
+            .cute-sticker { width: 80px; margin: 5px; }
         }
     </style>
 </head>
@@ -291,63 +226,54 @@
             <strong>– Your Dumb Friend, Who Really Cares About You 🫣</strong>
         </div>
 
-        <!-- Cute Stickers -->
         <img src="S1 (1).png" class="cute-sticker" alt="cry bear" />
         <img src="s3.png" class="cute-sticker" alt="bear heart" />
         <img src="s2.png" class="cute-sticker" alt="sad bunny" />
 
-        <!-- Buttons -->
         <div class="surprise-btn" onclick="showSurprise()">🙄 Tap for Surprise</div>
 
-        <!-- Surprise Popup Image -->
-        <!-- Surprise Popup Image -->
-<div id="surprise-popup">
-  <div class="popup-inner" onclick="event.stopPropagation()">
-    <img src="WhatsApp Image 2025-06-17 at 13.05.19_fac0b5ec.jpg" alt="Surprise" />
-  </div>
-</div>
+        <!-- Surprise Popup -->
+        <div id="surprise-popup">
+            <div class="popup-inner" onclick="event.stopPropagation()">
+                <img src="WhatsApp Image 2025-06-17 at 13.05.19_fac0b5ec.jpg" alt="Surprise" />
+            </div>
+        </div>
 
         <div class="btn" onclick="forgiveMe()">💬 Forgive Me?</div>
 
-        <!-- Popup -->
         <div id="thankyou-popup">😭 Thank you... I’ll never hurt you again! 💖</div>
 
-        <!-- Decorations -->
         <div class="hearts" id="hearts"></div>
         <div class="balloons" id="balloons"></div>
 
         <!-- Background Music -->
         <audio autoplay loop>
-            <source src="miaw-miaw-miaw-song-sad-lyrics-video-visual.m4a" type="audio/mpeg">
+            <source src="miaw-miaw-miaw-song-sad-lyrics-video-visual.m4a" type="audio/mpeg" />
         </audio>
     </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script>
-function showSurprise() {
-    const popup = document.getElementById("surprise-popup");
-    popup.style.display = "flex";
+        function showSurprise() {
+            const popup = document.getElementById("surprise-popup");
+            popup.style.display = "flex";
 
-    // Balloons effect
-    for (let i = 0; i < 20; i++) {
-        const balloon = document.createElement('div');
-        balloon.className = 'balloon';
-        balloon.style.left = Math.random() * 100 + 'vw';
-        balloon.style.animationDelay = Math.random() * 4 + 's';
-        document.getElementById('balloons').appendChild(balloon);
-        setTimeout(() => balloon.remove(), 6000);
-    }
+            for (let i = 0; i < 20; i++) {
+                const balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                balloon.style.left = Math.random() * 100 + 'vw';
+                balloon.style.animationDelay = Math.random() * 4 + 's';
+                document.getElementById('balloons').appendChild(balloon);
+                setTimeout(() => balloon.remove(), 6000);
+            }
 
-    // Add click to close when clicking outside
-    popup.onclick = function () {
-        popup.style.display = "none";
-    };
-}
+            // Close popup on outside click
+            popup.onclick = function () {
+                popup.style.display = "none";
+            };
+        }
 
-
-    </script>
-    <script>
         function forgiveMe() {
             confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
             document.getElementById("thankyou-popup").style.display = "block";
@@ -355,6 +281,15 @@ function showSurprise() {
                 window.location.href = "https://wa.me/919558046799?text=Yes,%20I%20Forgive%20you%20";
             }, 3000);
         }
+
+        // Autoplay-safe audio trigger
+        document.addEventListener('DOMContentLoaded', () => {
+            const audio = document.getElementById("bg-audio");
+            document.body.addEventListener("click", function playAudioOnce() {
+                audio.play().catch(e => console.log("Autoplay failed:", e));
+                document.body.removeEventListener("click", playAudioOnce);
+            });
+        });
     </script>
 </body>
 
