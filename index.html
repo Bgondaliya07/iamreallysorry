@@ -236,25 +236,32 @@
             }
         }
 
-        #surprise-popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 999;
-            padding: 20px;
-            background: #fff0f5;
-            border-radius: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-            animation: popupFade 0.5s ease;
-        }
+#surprise-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* dark overlay */
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        #surprise-popup img {
-            width: 250px;
-            max-width: 90vw;
-            height: auto;
-        }
+.popup-inner {
+    animation: popupFade 0.5s ease;
+}
+
+.popup-inner img {
+    width: 250px;
+    max-width: 90vw;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
 
         @keyframes popupFade {
             from {
@@ -293,9 +300,13 @@
         <div class="surprise-btn" onclick="showSurprise()">🙄 Tap for Surprise</div>
 
         <!-- Surprise Popup Image -->
-        <div id="surprise-popup">
-            <img src="WhatsApp Image 2025-06-17 at 13.05.19_fac0b5ec.jpg" alt="Surprise" />
-        </div>
+        <!-- Surprise Popup Image -->
+<div id="surprise-popup">
+  <div class="popup-inner" onclick="event.stopPropagation()">
+    <img src="WhatsApp Image 2025-06-17 at 13.05.19_fac0b5ec.jpg" alt="Surprise" />
+  </div>
+</div>
+
         <div class="btn" onclick="forgiveMe()">💬 Forgive Me?</div>
 
         <!-- Popup -->
@@ -314,19 +325,26 @@
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <script>
-        function showSurprise() {
-            document.getElementById("surprise-popup").style.display = "block";
+function showSurprise() {
+    const popup = document.getElementById("surprise-popup");
+    popup.style.display = "flex";
 
-            // Balloons effect
-            for (let i = 0; i < 20; i++) {
-                const balloon = document.createElement('div');
-                balloon.className = 'balloon';
-                balloon.style.left = Math.random() * 100 + 'vw';
-                balloon.style.animationDelay = Math.random() * 4 + 's';
-                document.getElementById('balloons').appendChild(balloon);
-                setTimeout(() => balloon.remove(), 6000);
-            }
-        }
+    // Balloons effect
+    for (let i = 0; i < 20; i++) {
+        const balloon = document.createElement('div');
+        balloon.className = 'balloon';
+        balloon.style.left = Math.random() * 100 + 'vw';
+        balloon.style.animationDelay = Math.random() * 4 + 's';
+        document.getElementById('balloons').appendChild(balloon);
+        setTimeout(() => balloon.remove(), 6000);
+    }
+
+    // Add click to close when clicking outside
+    popup.onclick = function () {
+        popup.style.display = "none";
+    };
+}
+
 
     </script>
     <script>
