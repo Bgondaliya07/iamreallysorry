@@ -342,17 +342,6 @@
             document.getElementById('hearts').appendChild(heart);
         }
 
-        function showBalloons() {
-            for (let i = 0; i < 15; i++) {
-                const balloon = document.createElement('div');
-                balloon.className = 'balloon';
-                balloon.style.left = Math.random() * 100 + 'vw';
-                balloon.style.animationDelay = Math.random() * 4 + 's';
-                document.getElementById('balloons').appendChild(balloon);
-                setTimeout(() => balloon.remove(), 6000);
-            }
-        }
-
         function forgiveMe() {
             confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
             document.getElementById("thankyou-popup").style.display = "block";
