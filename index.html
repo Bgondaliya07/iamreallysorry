@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>I'm Really Sorry 💔</title>
+    <title>I'm Really Sorry</title>
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <style>
         * {
@@ -22,9 +22,17 @@
         }
 
         @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         .container {
@@ -67,8 +75,15 @@
         }
 
         @keyframes floatSoft {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
         }
 
         .btn,
@@ -103,11 +118,19 @@
         }
 
         @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
         }
 
-        .hearts, .balloons {
+        .hearts,
+        .balloons {
             position: fixed;
             pointer-events: none;
             z-index: 1;
@@ -117,7 +140,8 @@
             height: 100%;
         }
 
-        .heart, .balloon {
+        .heart,
+        .balloon {
             position: absolute;
             background-size: contain;
         }
@@ -137,15 +161,35 @@
         }
 
         @keyframes float {
-            0% { transform: translateY(100vh); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(-100vh); opacity: 0; }
+            0% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
         }
 
         @keyframes rise {
-            0% { bottom: -100px; opacity: 0; }
-            30% { opacity: 1; }
-            100% { bottom: 120%; opacity: 0; }
+            0% {
+                bottom: -100px;
+                opacity: 0;
+            }
+
+            30% {
+                opacity: 1;
+            }
+
+            100% {
+                bottom: 120%;
+                opacity: 0;
+            }
         }
 
         #thankyou-popup {
@@ -185,7 +229,7 @@
             max-width: 90vw;
             height: auto;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         @keyframes popupFade {
@@ -193,6 +237,7 @@
                 opacity: 0;
                 transform: translateY(-20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -204,10 +249,25 @@
         }
 
         @media (max-width: 600px) {
-            h1 { font-size: 1.8em; }
-            .message { font-size: 1em; padding: 15px; }
-            .btn, .surprise-btn { font-size: 1em; padding: 12px 20px; }
-            .cute-sticker { width: 80px; margin: 5px; }
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .message {
+                font-size: 1em;
+                padding: 15px;
+            }
+
+            .btn,
+            .surprise-btn {
+                font-size: 13px;
+                padding: 12px 20px;
+            }
+
+            .cute-sticker {
+                width: 80px;
+                margin: 5px;
+            }
         }
     </style>
 </head>
@@ -239,9 +299,13 @@
             </div>
         </div>
 
-        <div class="btn" onclick="forgiveMe()">💬 Tap To Forgive Me?</div>
+        <div class="btn" onclick="forgiveMe()">💬Tap To Forgive Me?</div>
 
-        <div id="thankyou-popup">😭 Thank you... I’ll never hurt you again! 💖</div>
+        <div id="thankyou-popup">😭 Thank you... I’ll never do that again! 💖</div>
+
+        <div class="btn"><a style="text-decoration: none;" href="explanation.html">📜 My Explanation</a></div>
+        <div class="btn"><a style="text-decoration: none;" href="something.html">🌸 Something Special</a></div>
+
 
         <div class="hearts" id="hearts"></div>
         <div class="balloons" id="balloons"></div>
