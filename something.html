@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Something Special 🌸</title>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Patrick Hand', cursive;
+            background: linear-gradient(to top, #ffe5ec, #ffc2d1);
+            overflow: hidden;
+        }
+
+        .garden {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .message-box {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .message-box h1 {
+            font-size: 2em;
+            color: #d6336c;
+            margin-bottom: 15px;
+        }
+
+        .message-box p {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.6;
+            word-break: break-word;
+        }
+
+        .flower {
+            position: absolute;
+            width: 45px;
+            height: 45px;
+            background-size: cover;
+            animation: floatUp 15s linear infinite;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background-color: #bfdbfe;
+            color: #1e3a8a;
+            text-decoration: none;
+            font-size: 1.1em;
+            border-radius: 25px;
+            box-shadow: 0 4px 10px rgba(30, 64, 175, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #93c5fd;
+            box-shadow: 0 6px 15px rgba(30, 64, 175, 0.3);
+            transform: scale(1.05);
+        }
+
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0.8);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-20vh) scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        /* Mobile-specific improvements */
+        @media (max-width: 600px) {
+            .message-box {
+                padding: 20px;
+                max-width: 90%;
+                max-height: 85vh;
+            }
+
+            .message-box h1 {
+                font-size: 1.5em;
+            }
+
+            .message-box p {
+                font-size: 1em;
+            }
+
+            .flower {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="garden" id="garden">
+        <div class="message-box">
+            <h1>Hey You 🌸</h1>
+            <p>
+                I know I made a mistake… and I’ve been carrying that weight every moment since.<br>
+
+                But yes it's a promise that I’ll do better. 🌼<br>
+
+                I can’t undo what happened, but I can grow from it. <br>
+
+                Please visit again when the page is complete 🌷. I’m still working on something special, <br>
+                for you. <br>
+
+                Please come back, okay?
+            </p>
+            <br>
+        <a href="https://bgondaliya07.github.io/iamreallysorry/" class="back-btn">Go back for now 🥺</a>
+        </div>
+        
+
+    </div>
+
+    <script>
+        const garden = document.getElementById('garden');
+        const isMobile = window.innerWidth < 600;
+        const flowerCount = isMobile ? 15 : 30;
+
+        for (let i = 0; i < flowerCount; i++) {
+            const flower = document.createElement('div');
+            flower.classList.add('flower');
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDelay = Math.random() * 10 + 's';
+            garden.appendChild(flower);
+        }
+    </script>
+</body>
+
+</html>
